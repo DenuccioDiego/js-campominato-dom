@@ -50,10 +50,23 @@ while(bombe.length<16){
           bombe.push(numeroRandom)
      }
 
+
+    
+
 }
 
 
-// creazioneDiv.addEventListener("click", function(){
-//      this.classList.add("red")
+
      
-// })
+creazioneDiv.addEventListener("click", function(){
+     
+     var ok = document.getElementById("container").children[bombe]
+    console.log(ok)
+     
+     
+})
+
+
+
+
+
