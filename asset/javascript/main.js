@@ -32,31 +32,28 @@ for(let i=1; i<=sceltaUtente; i++){  // il numero giri del ciclo coincide con il
      selezioneContainer.append(creazioneDiv) //inserisco il div creato nel contenitore
      
      //al click faccio diventare verdi i quadrati 
-     
+     creazioneDiv.addEventListener("click", function(){
 
+          this.classList.add("green") //con this richiamo il div 
+     })
+}
+
+
+
+
+let bombe = []
+
+while(bombe.length<16){
+     
+     let numeroRandom = Math.floor(Math.random() * (sceltaUtente - 1 + 1) + 1);
+     if(!(bombe.includes(numeroRandom))){
+          bombe.push(numeroRandom)
+     }
 
 }
-let selezioneDiv = document.getElementsByClassName("box")
-console.log(selezioneDiv)
-console.log(this)
 
-document.getElementsByClassName("box").addEventListener("click", function(){
 
-     this.classList.add("green") //con this richiamo il div 
+// creazioneDiv.addEventListener("click", function(){
+//      this.classList.add("red")
      
-})
-
-
-
-let numeroRandom = 0
- for(let i=1; i<=sceltaUtente * 0.20; i+=numeroRandom){
-     console.log(numeroRandom)
-
-      numeroRandom = Math.floor(Math.random() * (sceltaUtente - 1 + 1) + 1);
-     
-      creazioneDiv.addEventListener("click", function(){
-          this.classList.add("red")
-     })
-
-
- }
+// })
