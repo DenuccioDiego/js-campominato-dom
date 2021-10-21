@@ -21,7 +21,17 @@ else if(sceltaUtente==1){
 
 const selezioneContainer = document.getElementById("container") // selezione il container 
 
+let bombe = []
+let caselleCreate = []
 
+while(bombe.length<16){
+     
+     let numeroRandom = Math.floor(Math.random() * (sceltaUtente - 1 + 1) + 1);
+     if(!(bombe.includes(numeroRandom))){
+          bombe.push(numeroRandom)
+     }
+
+}
 
 for(let i=1; i<=sceltaUtente; i++){  // il numero giri del ciclo coincide con il numero delle caselle del livello stabilito
      
@@ -31,40 +41,49 @@ for(let i=1; i<=sceltaUtente; i++){  // il numero giri del ciclo coincide con il
 
      selezioneContainer.append(creazioneDiv) //inserisco il div creato nel contenitore
      
-     //al click faccio diventare verdi i quadrati 
-     creazioneDiv.addEventListener("click", function(){
+     
+     caselleCreate.push(i)
+     //console.log(caselleCreate)
+}
 
-          this.classList.add("green") //con this richiamo il div 
+
+
+
+let casellSafe = caselleCreate.filter(x => !bombe.includes(x));
+console.log(casellSafe)
+
+
+
+
+
+
+let divCreati = document.getElementsByClassName("box")
+console.log(divCreati)
+//al click faccio diventare verdi i quadrati
+for(let i=0; i<=casellSafe.length; i++){
+
+     selezioneContainer.children[casellSafe[i]].addEventListener("click", function(){
+          document.getElementById("container").children[casellSafe[i]].style.backgroundColor = "green"
      })
-}
-
-
-
-
-let bombe = []
-
-while(bombe.length<16){
      
-     let numeroRandom = Math.floor(Math.random() * (sceltaUtente - 1 + 1) + 1);
-     if(!(bombe.includes(numeroRandom))){
-          bombe.push(numeroRandom)
-     }
+} 
 
-
+     
     
+for(let i=0; i<=bombe.length; i++){
 
-}
+     selezioneContainer.children[bombe[i]].addEventListener("click", function(){
+          document.getElementById("container").children[bombe[i]].style.backgroundColor = "red"
+     })
+     
+} 
 
 
 
-     
-creazioneDiv.addEventListener("click", function(){
-     
-     var ok = document.getElementById("container").children[bombe]
-    console.log(ok)
-     
-     
-})
+
+
+
+
 
 
 
