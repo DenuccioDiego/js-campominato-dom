@@ -42,34 +42,34 @@ for(let i=1; i<=sceltaUtente; i++){  // il numero giri del ciclo coincide con il
      selezioneContainer.append(creazioneDiv) //inserisco il div creato nel contenitore
      
      caselleCreate.push(i)
-     console.log(caselleCreate)
+     
 }
 
 
-let casellSafe = caselleCreate.filter(x => !bombe.includes(x));
+let caselleSafe = caselleCreate.filter(x => !bombe.includes(x));
 
-let divCreati = document.querySelectorAll(".box")
-
-
+let divCreati = document.getElementsByClassName("box")
+console.log(divCreati)
+console.log(bombe)
+console.log(caselleSafe)
 
 //al click faccio diventare verdi i quadrati
-for(let i=0; i<=casellSafe.length; i++){
-     
-     divCreati[casellSafe[i]].addEventListener("click", function(){
-          document.getElementById("container").children[casellSafe[i]].style.backgroundColor = "green"
+for(let i=0; i<=caselleSafe.length; i++){
+
+     divCreati[caselleSafe[i]].addEventListener("click", function(){
+          document.getElementById("container").children[caselleSafe[i]].style.backgroundColor = "green"
      })
      
 } 
 
-     
-    
 for(let i=0; i<=bombe.length; i++){
 
      divCreati[bombe[i]].addEventListener("click", function(){
           document.getElementById("container").children[bombe[i]].style.backgroundColor = "red"
      })
-     
-} 
+}    
+    
+
 
 
 
