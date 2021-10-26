@@ -1,4 +1,5 @@
 
+
 let sceltaUtente = "" // dichiaro variabile che l'utente riempirà con un scelta forzata 
 
 do{
@@ -45,32 +46,35 @@ for(let i=1; i<=sceltaUtente; i++){  // il numero giri del ciclo coincide con il
      
 }
 
+let divCreati = document.querySelectorAll(".box")
 
-let caselleSafe = caselleCreate.filter(x => !bombe.includes(x));
-
-let divCreati = document.getElementsByClassName("box")
-console.log(divCreati)
-console.log(bombe)
-console.log(caselleSafe)
-
-//al click faccio diventare verdi i quadrati
-for(let i=0; i<=caselleSafe.length; i++){
-
-     divCreati[caselleSafe[i]].addEventListener("click", function(){
-          document.getElementById("container").children[caselleSafe[i]].style.backgroundColor = "green"
-     })
+function questaIsUnaBomba(){
      
-} 
+          
+     if(bombe.includes(Number(this.innerText))){
+          this.classList.add("red")
+          const cells = document.getElementsByClassName('box')
+          for (let i = 0; i < cells.length; i++) {
+          const cell = cells[i]
+               if (bombe.includes(Number(cell.innerText))) {
+               cell.style.backgroundColor = 'red'
+               
+               }
+          }
+          
+     }
+          
+     
+     this.classList.add("green")
+}
 
-for(let i=0; i<=bombe.length; i++){
 
-     divCreati[bombe[i]].addEventListener("click", function(){
-          document.getElementById("container").children[bombe[i]].style.backgroundColor = "red"
-     })
-}    
-    
-
-
+for(let i=0; i<=sceltaUtente; i++){
+     let x = divCreati[i]
+     console.log(x)
+     x.addEventListener("click", questaIsUnaBomba)
+         
+}
 
 
 
